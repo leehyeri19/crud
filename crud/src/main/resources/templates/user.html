@@ -3,18 +3,21 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
 <title>AdminLTE 3 | Starter</title>
 
-<!-- Google Font: Source Sans Pro -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 <!-- Font Awesome Icons -->
-<link rel="stylesheet" href="/static/plugins/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" type="text/css" th:href="@{/plugins/fontawesome-free/css/all.min.css}"/>
 <!-- Theme style -->
-<link rel="stylesheet" href="/static/dist/css/adminlte.min.css">
+<link rel="stylesheet" type="text/css" th:href="@{/dist/css/adminlte.min.css}"/>
+<!-- Google Font: Source Sans Pro -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -27,37 +30,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
 	</li>
 	<li class="nav-item d-none d-sm-inline-block">
-		<a href="index3.html" class="nav-link">Home</a>
+		<a href="index3" class="nav-link">Home</a>
 	</li>
 	<li class="nav-item d-none d-sm-inline-block">
 		<a href="#" class="nav-link">Contact</a>
 	</li>
 	</ul>
 
+	<!-- SEARCH FORM -->
+	<form class="form-inline ml-3">
+	<div class="input-group input-group-sm">
+		<input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+		<div class="input-group-append">
+		<button class="btn btn-navbar" type="submit">
+			<i class="fas fa-search"></i>
+		</button>
+		</div>
+	</div>
+	</form>
+
+	<!-- login part -->
+	<button id="loginButton">login</button>
+	<!-- //login part -->
+
 	<!-- Right navbar links -->
 	<ul class="navbar-nav ml-auto">
-	<!-- Navbar Search -->
-	<li class="nav-item">
-		<a class="nav-link" data-widget="navbar-search" href="#" role="button">
-		<i class="fas fa-search"></i>
-		</a>
-		<div class="navbar-search-block">
-		<form class="form-inline">
-			<div class="input-group input-group-sm">
-			<input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-			<div class="input-group-append">
-				<button class="btn btn-navbar" type="submit">
-				<i class="fas fa-search"></i>
-				</button>
-				<button class="btn btn-navbar" type="button" data-widget="navbar-search">
-				<i class="fas fa-times"></i>
-				</button>
-			</div>
-			</div>
-		</form>
-		</div>
-	</li>
-
 	<!-- Messages Dropdown Menu -->
 	<li class="nav-item dropdown">
 		<a class="nav-link" data-toggle="dropdown" href="#">
@@ -68,7 +65,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<a href="#" class="dropdown-item">
 			<!-- Message Start -->
 			<div class="media">
-			<img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+				<img th:src="@{/dist/img/user1-128x128.jpg}" alt="User Avatar" class="img-size-50 mr-3 img-circle" />
 			<div class="media-body">
 				<h3 class="dropdown-item-title">
 				Brad Diesel
@@ -84,7 +81,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<a href="#" class="dropdown-item">
 			<!-- Message Start -->
 			<div class="media">
-			<img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+			<img th:src="@{/dist/img/user8-128x128.jpg}" alt="User Avatar" class="img-size-50 img-circle mr-3"/>
 			<div class="media-body">
 				<h3 class="dropdown-item-title">
 				John Pierce
@@ -100,7 +97,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<a href="#" class="dropdown-item">
 			<!-- Message Start -->
 			<div class="media">
-			<img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+			<img th:src="@{/dist/img/user3-128x128.jpg}" alt="User Avatar" class="img-size-50 img-circle mr-3"/>
 			<div class="media-body">
 				<h3 class="dropdown-item-title">
 				Nora Silvester
@@ -144,14 +141,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		</div>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" data-widget="fullscreen" href="#" role="button">
-		<i class="fas fa-expand-arrows-alt"></i>
-		</a>
-	</li>
-	<li class="nav-item">
-		<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-		<i class="fas fa-th-large"></i>
-		</a>
+		<a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
+			class="fas fa-th-large"></i></a>
 	</li>
 	</ul>
 </nav>
@@ -161,7 +152,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 	<!-- Brand Logo -->
 	<a href="index3.html" class="brand-link">
-	<img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+	<img th:src="@{/dist/img/AdminLTELogo.png}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+		style="opacity: .8">
 	<span class="brand-text font-weight-light">AdminLTE 3</span>
 	</a>
 
@@ -170,22 +162,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<!-- Sidebar user panel (optional) -->
 	<div class="user-panel mt-3 pb-3 mb-3 d-flex">
 		<div class="image">
-		<img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+		<img th:src="@{/dist/img/user2-160x160.jpg}" class="img-circle elevation-2" alt="User Image">
 		</div>
 		<div class="info">
 		<a href="#" class="d-block">Alexander Pierce</a>
-		</div>
-	</div>
-
-	<!-- SidebarSearch Form -->
-	<div class="form-inline">
-		<div class="input-group" data-widget="sidebar-search">
-		<input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-		<div class="input-group-append">
-			<button class="btn btn-sidebar">
-			<i class="fas fa-search fa-fw"></i>
-			</button>
-		</div>
 		</div>
 	</div>
 
@@ -194,7 +174,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 		<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 		<!-- Add icons to the links using the .nav-icon class
 			with font-awesome or any other icon font library -->
-		<li class="nav-item menu-open">
+		<li class="nav-item has-treeview menu-open">
 			<a href="#" class="nav-link active">
 			<i class="nav-icon fas fa-tachometer-alt"></i>
 			<p>
@@ -204,15 +184,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
 			</a>
 			<ul class="nav nav-treeview">
 			<li class="nav-item">
-				<a href="#" class="nav-link active">
+				<a href="/crud/main" class="nav-link active">
 				<i class="far fa-circle nav-icon"></i>
-				<p>Active Page</p>
+				<p>지도</p>
 				</a>
 			</li>
 			<li class="nav-item">
-				<a href="#" class="nav-link">
+				<a href="/crud/main/user" class="nav-link">
 				<i class="far fa-circle nav-icon"></i>
-				<p>Inactive Page</p>
+				<p>사용자 게시판</p>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a href="/crud/main/device" class="nav-link">
+				<i class="far fa-circle nav-icon"></i>
+				<p>디바이스 게시판</p>
 				</a>
 			</li>
 			</ul>
@@ -240,7 +226,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	<div class="container-fluid">
 		<div class="row mb-2">
 		<div class="col-sm-6">
-			<h1 class="m-0">Starter Page</h1>
+			<h1 class="m-0 text-dark">사용자 게시판</h1>
 		</div><!-- /.col -->
 		<div class="col-sm-6">
 			<ol class="breadcrumb float-sm-right">
@@ -253,68 +239,80 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	</div>
 	<!-- /.content-header -->
 
+<!-- =====================================여기서부터 내용 ============================================ -->
 	<!-- Main content -->
 	<div class="content">
-	<div class="container-fluid">
-		<div class="row">
-		<div class="col-lg-6">
-			<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-
-				<p class="card-text">
-				Some quick example text to build on the card title and make up the bulk of the card's
-				content.
-				</p>
-
-				<a href="#" class="card-link">Card link</a>
-				<a href="#" class="card-link">Another link</a>
-			</div>
-			</div>
-
-			<div class="card card-primary card-outline">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-
-				<p class="card-text">
-				Some quick example text to build on the card title and make up the bulk of the card's
-				content.
-				</p>
-				<a href="#" class="card-link">Card link</a>
-				<a href="#" class="card-link">Another link</a>
-			</div>
-			</div><!-- /.card -->
+		<!-- 검색 -->
+		<div class="searchBox">
+			<fieldset class="clearfix">
+				<label class="col-form-label">사용자ID</label>
+				<input type="text" id="sKey" class="inputSearch fleft inputClear" placeholder="사용자ID" onKeyDown="fnSearchKeyDown(this);">
+				<label class="col-form-label">제목</label>
+				<input type="text" id="sKey1" class="inputSearch fleft inputClear" placeholder="제목" onKeyDown="fnSearchKeyDown(this);">
+				<button type="button" class="black40" onclick="fnSearchPage();">검색</button>
+			</fieldset>
 		</div>
-		<!-- /.col-md-6 -->
-		<div class="col-lg-6">
-			<div class="card">
-			<div class="card-header">
-				<h5 class="m-0">Featured</h5>
-			</div>
-			<div class="card-body">
-				<h6 class="card-title">Special title treatment</h6>
+		<!-- //검색 -->
+		<!-- 게시판 -->
+		<article>
+			<div>
+				<select>
+					<option value="10">10건씩 보기</option>
+					<option value="25">25건씩 보기</option>
+					<option value="50">50건씩 보기</option>
+					<option value="100">100건씩 보기</option>
+					<option value="200">200건씩 보기</option>
+				</select>
 
-				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
 			</div>
 
-			<div class="card card-primary card-outline">
-			<div class="card-header">
-				<h5 class="m-0">Featured</h5>
-			</div>
-			<div class="card-body">
-				<h6 class="card-title">Special title treatment</h6>
-
-				<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
-			</div>
-			</div>
-		</div>
-		<!-- /.col-md-6 -->
-		</div>
-		<!-- /.row -->
-	</div><!-- /.container-fluid -->
+			<table>
+				<colgroup>
+					<col style="width:3.5%;">
+					<col style="width:2%;">
+					<col style="width:15%;">
+					<col style="width:15%;">
+					<col style="width:15%;">
+					<col style="width:15%;">
+					<col style="width:8%;">
+					<col style="width:8%;">
+				</colgroup>
+				<thead>
+					<tr>
+						<th><input type="checkbox" name="titleAllCheck" id="titleAllCheck" onClick="fnTitleAllCheck(this);"><label for="titleAllCheck"></label></th>
+						<th>수정</th>
+						<th>단말기ID</th>
+						<th>단말기명</th>
+						<th>등록일</th>
+						<th>마지막 수신시간</th>
+						<th>배터리 잔량 (%)</th>
+						<th>현재위치</th>
+					</tr>
+				</thead>
+				<tbody>
+				<!--
+					<th:block th:each="entry : ${data.list}">
+						<tr>
+							<td>
+								<input type="checkbox" name="listTbodyCheck" th:id="'listTbodyCheck_'+${entryStat.index}" th:onClick="fnListTBodyCheck();">
+								<label th:for="'listTbodyCheck_'+${entryStat.index}"></label>
+							</td>
+							<td>
+								<button type="button" class="edit" th:myData="${entry.device_id}" th:onClick="fnOpenDevice(this.getAttribute('myData'));"></button>
+							</td>
+							<td th:text="${entry.device_id}"></td>
+							<td th:text="${entry.device_name}"></td>
+							<td th:text="${entry.reg_dt_str}"></td>
+							<td th:text="${entry.meastime}"></td>
+							<td th:text="${entry.btry}"></td>
+							<td><i class="fas fa-sync-alt icon_sync" th:data="${entry.device_id}" th:onclick="fnReLocation(this.getAttribute('data'));"></i></td>
+						</tr>
+					</th:block>
+				-->
+				</tbody>
+			</table>
+		</article>
+		<!-- //게시판 -->
 	</div>
 	<!-- /.content -->
 </div>
@@ -329,7 +327,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	</div>
 </aside>
 <!-- /.control-sidebar -->
-
+<!-- //=====================================여기서부터 내용 ============================================ -->
 <!-- Main Footer -->
 <footer class="main-footer">
 	<!-- To the right -->
@@ -337,7 +335,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 	Anything you want
 	</div>
 	<!-- Default to the left -->
-	<strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+	<strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
 </footer>
 </div>
 <!-- ./wrapper -->
@@ -345,10 +343,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script th:src="@{/plugins/jquery/jquery.min.js}"></script>
 <!-- Bootstrap 4 -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script th:src="@{/dist/js/adminlte.min.js}"></script>
 </body>
 </html>
